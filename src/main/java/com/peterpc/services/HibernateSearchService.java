@@ -1,6 +1,6 @@
 package com.peterpc.services;
 
-import com.peterpc.model.Customers;
+import com.peterpc.model.CustomerModel;
 import org.apache.lucene.search.Query;
 import org.hibernate.search.jpa.FullTextEntityManager;
 import org.hibernate.search.jpa.Search;
@@ -39,26 +39,26 @@ public class HibernateSearchService {
     }
 
     @Transactional
-    public List<Customers> fuzzySearch(String searchTerm) {
+    public List<CustomerModel> fuzzySearch(String searchTerm) {
 
         FullTextEntityManager fullTextEntityManager = Search.getFullTextEntityManager(centityManager);
-        QueryBuilder qb = fullTextEntityManager.getSearchFactory().buildQueryBuilder().forEntity(Customers.class).get();
+        QueryBuilder qb = fullTextEntityManager.getSearchFactory().buildQueryBuilder().forEntity(CustomerModel.class).get();
         Query luceneQuery = qb.keyword().fuzzy().withEditDistanceUpTo(1).withPrefixLength(1).onFields("name")
                 .matching(searchTerm).createQuery();
 
-        javax.persistence.Query jpaQuery = fullTextEntityManager.createFullTextQuery(luceneQuery, Customers.class);
+        javax.persistence.Query jpaQuery = fullTextEntityManager.createFullTextQuery(luceneQuery, CustomerModel.class);
 
         // execute search
 
-        List<Customers> CustomerList = null;
+        List<CustomerModel> CustomerModelList = null;
         try {
-            CustomerList = jpaQuery.getResultList();
+            CustomerModelList = jpaQuery.getResultList();
         } catch (NoResultException nre) {
             ;// do nothing
 
         }
 
-        return CustomerList;
+        return CustomerModelList;
 
 
     }

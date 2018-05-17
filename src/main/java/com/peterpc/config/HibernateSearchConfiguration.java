@@ -9,7 +9,7 @@ import org.springframework.context.annotation.Configuration;
 import com.peterpc.services.HibernateSearchService;
 @EnableAutoConfiguration
 @Configuration
-public class HibernateSearchConfig {
+public class HibernateSearchConfiguration {
 
     @Autowired
     private EntityManager bentityManager;

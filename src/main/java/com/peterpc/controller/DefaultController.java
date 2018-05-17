@@ -1,6 +1,10 @@
 package com.peterpc.controller;
 
+//import com.peterpc.model.BaseballCard;
+import com.peterpc.model.CustomerModel;
 import com.peterpc.model.Post;
+import com.peterpc.services.CustomerModelService;
+import com.peterpc.services.HibernateSearchService;
 import com.peterpc.services.UserService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -16,6 +20,11 @@ import java.util.List;
 @Controller
 public class DefaultController {
 
+    @Autowired
+    private HibernateSearchService searchservice;
+
+    @Autowired
+    private CustomerModelService cardservice;
 
     private final Logger log = LoggerFactory.getLogger(this.getClass());
 
@@ -91,6 +100,23 @@ public class DefaultController {
     @GetMapping("/403")
     public String error403() {
         return "/error/403";
+    }
+
+    @RequestMapping(value = "/search", method = RequestMethod.GET)
+    public String search(@RequestParam(value = "search", required = false) String q, Model model) {
+        List<CustomerModel> searchResults = null;
+        try {
+            //cardservice.addCards();
+            searchResults = searchservice.fuzzySearch(q);
+
+        } catch (Exception ex) {
+            // here you should handle unexpected errors
+            // ...
+            // throw ex;
+        }
+        model.addAttribute("search", searchResults);
+        return "search";
+
     }
 
 
