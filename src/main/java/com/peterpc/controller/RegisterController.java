@@ -1,20 +1,14 @@
 package com.peterpc.controller;
 
-import java.util.Map;
-import java.util.UUID;
+import java.util.*;
 
-import javax.activation.DataSource;
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 
-import com.peterpc.config.EmailService;
-import com.peterpc.config.UserService;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Bean;
+import com.peterpc.services.EmailService;
+import com.peterpc.services.UserService;
 import org.springframework.mail.SimpleMailMessage;
-import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -24,7 +18,6 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.peterpc.model.User;
-import com.peterpc.model.Role;
 import com.nulabinc.zxcvbn.Strength;
 import com.nulabinc.zxcvbn.Zxcvbn;
 
@@ -118,7 +111,7 @@ public class RegisterController {
 
     // Process confirmation link
     @RequestMapping(value="/confirm", method = RequestMethod.POST)
-    public ModelAndView confirmRegistration(ModelAndView modelAndView, BindingResult bindingResult, @RequestParam Map<String, String> requestParams, RedirectAttributes redir, Role role) {
+    public ModelAndView confirmRegistration(ModelAndView modelAndView, BindingResult bindingResult, @RequestParam Map<String, String> requestParams, RedirectAttributes redir) {
 
         modelAndView.setViewName("confirm");
 
@@ -139,6 +132,7 @@ public class RegisterController {
 
         // Find the user associated with the reset token
         User user = userService.findByConfirmationToken(requestParams.get("token"));
+        //Role role = userService.findByEmail("email");
 
         // Set new password
         user.setPassword(bCryptPasswordEncoder.encode(requestParams.get("password")));
@@ -147,9 +141,12 @@ public class RegisterController {
         // Set user to enabled
         user.setEnabled(true);
 
+
+
+
+
         //MANGLER AT SET ROLE TIL ROLE_USER AUTOMATISK PÅ NYE REGISTRERINGER
-        //role.setEmail(requestParams.get("email"));
-        //role.setRole("ROLE_USER");
+
 
 
         // Save user

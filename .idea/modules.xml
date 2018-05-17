@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/roskilde-bornehave-spring-app.iml" filepath="$PROJECT_DIR$/roskilde-bornehave-spring-app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/eksamen-carlsberg.iml" filepath="$PROJECT_DIR$/eksamen-carlsberg.iml" />
     </modules>
   </component>
 </project>

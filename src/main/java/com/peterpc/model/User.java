@@ -1,19 +1,23 @@
 package com.peterpc.model;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 import org.hibernate.validator.constraints.Email;
 import org.hibernate.validator.constraints.NotEmpty;
 import org.springframework.data.annotation.Transient;
 
+import java.security.acl.Group;
+import java.util.*;
+
+/*
+Class for handling user table in database
+getters and setters for writing to the table
+ */
 @Entity
 @Table(name = "user")
 public class User {
+
+
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
@@ -43,6 +47,24 @@ public class User {
 	@Column(name = "confirmation_token")
 	private String confirmationToken;
 
+	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, targetEntity = Role.class)
+	@JoinTable(name = "USER_ROLE", joinColumns = { @JoinColumn(name = "USER_ID") }, inverseJoinColumns = { @JoinColumn(name = "ROLE_ID") })
+	private Set<Role> roles;
+
+
+	/*@ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+	@JoinTable(name = "roleuser",
+			joinColumns = @JoinColumn(name = "id", referencedColumnName = "id"),
+			inverseJoinColumns = @JoinColumn(name = "role_id", referencedColumnName = "user_role_id"))
+	private Collection<Role> roles;
+
+
+	/*@ManyToMany
+	@JoinTable(name = "user_role", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "role_id"))
+	public Set<Role> getRoles() {
+		return roles;
+	}
+*/
 
 
 	public String getConfirmationToken() {
@@ -52,6 +74,7 @@ public class User {
 	public void setConfirmationToken(String confirmationToken) {
 		this.confirmationToken = confirmationToken;
 	}
+
 
 
 	public int getId() {
@@ -103,4 +126,11 @@ public class User {
 	}
 
 
+	public Set<Role> getRoles() {
+		return roles;
+	}
+
+	public void setRoles(Set<Role> roles) {
+		this.roles = roles;
+	}
 }

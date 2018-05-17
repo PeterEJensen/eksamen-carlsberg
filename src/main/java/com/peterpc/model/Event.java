@@ -1,4 +1,4 @@
-package com.peterpc.config;
+package com.peterpc.model;
 
 public class Event {
 

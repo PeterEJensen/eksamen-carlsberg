@@ -1,7 +1,7 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <div th:fragment="header-css">
-        <!-- this is header-css -->
+        <!-- this is the header for our application. It displays the top bar and must be included in all html classes for the top bar to appear -->
         <link rel="stylesheet" type="text/css"
               href="webjars/bootstrap/3.3.7/css/bootstrap.min.css"/>
 
@@ -22,6 +22,7 @@
                     <li class="active"><a th:href="@{/}">Hjem</a></li>
                     <li class="active"><a th:href="@{/admin}">Admin</a></li>
                     <li class="active"><a th:href="@{/calendar}">Vagtplan</a></li>
+                    <li class="active"><a th:href="@{/search}">Søg</a></li>
                 </ul>
             </div>
         </div>

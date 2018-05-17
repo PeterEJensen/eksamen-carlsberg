@@ -7,10 +7,10 @@
 
 
 
-    <artifactId>spring-boot-web-spring-security</artifactId>
+    <artifactId>Carlsberg Customer intra</artifactId>
     <packaging>jar</packaging>
-    <name>Spring Boot Web Spring Security</name>
-    <description>Spring Boot Web Spring Security Example</description>
+    <name>Spring Carlsberg intra</name>
+    <description>Carlsberg eksamen</description>
     <version>1.0</version>
 
 
@@ -126,6 +126,33 @@
             <groupId>net.sourceforge.nekohtml</groupId>
             <artifactId>nekohtml</artifactId>
             <version>1.9.21</version>
+        </dependency>
+
+
+        <dependency>
+            <groupId>org.hibernate</groupId>
+            <artifactId>hibernate-search-engine</artifactId>
+            <version>5.6.1.Final</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.jboss.logging</groupId>
+                    <artifactId>jboss-logging</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+
+
+
+        <dependency>
+            <groupId>org.hibernate</groupId>
+            <artifactId>hibernate-search-orm</artifactId>
+            <version>5.6.1.Final</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.jboss.logging</groupId>
+                    <artifactId>jboss-logging</artifactId>
+                </exclusion>
+            </exclusions>
         </dependency>
 
     </dependencies>

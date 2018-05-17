@@ -1,19 +1,25 @@
 package com.peterpc.model;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
+import netscape.security.Privilege;
 import org.hibernate.validator.constraints.Email;
 import org.hibernate.validator.constraints.NotEmpty;
 import org.springframework.data.annotation.Transient;
 
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.List;
+import java.util.Set;
+
+/*
+Class for handling roleuser table in database
+getters and setters for writing to the table
+ */
 @Entity
 @Table(name = "roleuser")
 public class Role {
+
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -23,9 +29,9 @@ public class Role {
     @Column(name = "email", nullable = false, unique = true)
     private String email;
 
-
     @Column(name = "role")
     public String role;
+
 
 
 
@@ -53,7 +59,6 @@ public class Role {
     public void setEmail(String email) {
         this.email = email;
     }
-
 
 
 }
