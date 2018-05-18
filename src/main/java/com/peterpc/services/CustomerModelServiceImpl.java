@@ -11,9 +11,9 @@ public class CustomerModelServiceImpl implements CustomerModelService {
     @Autowired
     CustomerModelRepository customerrepository;
 
-    public void addCards() {
+    public void addCustomers() {
 
-        System.out.println("Cards have been added : " + customerrepository.findAll());
+        System.out.println("customers have been added : " + customerrepository.findAll());
 
     }
 }

@@ -23,11 +23,12 @@ public class Role {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "user_role_id")
-    private int roleid;
+    @Column(name = "role_id")
+    private int id;
 
-    @Column(name = "email", nullable = false, unique = true)
+   /* @Column(name = "email", nullable = false, unique = true)
     private String email;
+    */
 
     @Column(name = "role")
     public String role;
@@ -36,11 +37,11 @@ public class Role {
 
 
     public int getroleId() {
-        return roleid;
+        return id;
     }
 
     public void setroleId(int roleid) {
-        this.roleid = roleid;
+        this.id = roleid;
     }
 
 
@@ -52,7 +53,7 @@ public class Role {
         this.role = role;
     }
 
-    public String getEmail() {
+  /*  public String getEmail() {
         return email;
     }
 
@@ -60,5 +61,5 @@ public class Role {
         this.email = email;
     }
 
-
+*/
 }

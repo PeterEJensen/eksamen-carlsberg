@@ -1,6 +1,7 @@
 package com.peterpc.config;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
@@ -13,8 +14,6 @@ import org.springframework.security.web.access.AccessDeniedHandler;
 import javax.sql.DataSource;
 
 @Configuration
-// http://docs.spring.io/spring-boot/docs/current/reference/html/howto-security.html
-// Switch off the Spring Boot security configuration
 //@EnableWebSecurity
 public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
 
@@ -45,6 +44,12 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
                 .exceptionHandling().accessDeniedHandler(accessDeniedHandler);
     }
 
+    @Value("${spring.queries.users-query}")
+    private String usersQuery;
+
+
+    @Value("${spring.queries.roles-query}")
+    private String rolesQuery;
 
     @Autowired
     public void configAuthentication(AuthenticationManagerBuilder auth)
@@ -52,9 +57,11 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
 
         auth.jdbcAuthentication().dataSource(dataSource)
                 .passwordEncoder(passwordEncoder())
-                .usersByUsernameQuery("select email, password , enabled from user where email=?")
-                .authoritiesByUsernameQuery("select email, role from roleuser where email=?");
+                .usersByUsernameQuery(usersQuery)
+                .authoritiesByUsernameQuery(rolesQuery);
     }
+
+
 
     @Bean
     public PasswordEncoder passwordEncoder(){
@@ -64,5 +71,6 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
 
 
     }
+
 
 }
