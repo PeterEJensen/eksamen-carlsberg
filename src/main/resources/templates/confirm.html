@@ -31,7 +31,7 @@
     <div>
     
       <hr />
-      <h4>Set Your Password</h4>
+      <h4>Angiv password</h4>
 
       <div th:if="${successMessage}" class="alert alert-success"
         role="alert" th:text="${successMessage}"></div>
@@ -61,7 +61,7 @@
           <span class="input-group-addon">
             <span class="glyphicon glyphicon-lock"></span>
           </span>
-         <input type="password" class="form-control" id="signup-password-confirm" placeholder="Confirm Password" name="ConfirmPassword" data-fv-notempty="true"
+         <input type="password" class="form-control" id="signup-password-confirm" placeholder="Bekræft Password" name="ConfirmPassword" data-fv-notempty="true"
                                        data-fv-notempty-message="Please confirm password"
                                        data-fv-identical="true"
                                        data-fv-identical-field="password"
@@ -73,7 +73,7 @@
 
 		
         <button type="submit"
-          class="btn btn-primary block full-width m-b">Save
+          class="btn btn-primary block full-width m-b">Bekræft
         </button>
 
 
@@ -113,7 +113,7 @@
 		            password: {
 		                validators: {
 		                    notEmpty: {
-		                        message: 'The password is required'
+		                        message: 'Password skal angives'
 		                    },
 		                    callback: {
 		                        callback: function(value, validator, $field) {
@@ -124,7 +124,7 @@
 
 		                            var result  = zxcvbn(password),
 		                                score   = result.score,
-		                                message = result.feedback.warning || 'The password is weak';
+		                                message = result.feedback.warning || 'Passwordet er for svagt';
 
 		                            // Update the progress bar width and add alert class **not implemented**
 		                            var $bar = $('#strengthBar');

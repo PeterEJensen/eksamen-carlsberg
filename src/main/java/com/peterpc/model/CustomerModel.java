@@ -7,6 +7,11 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
+
+/*
+Class for handling customermodel table in database
+getters and setters for writing to the table
+ */
 @Indexed
 @Entity
 public class CustomerModel {

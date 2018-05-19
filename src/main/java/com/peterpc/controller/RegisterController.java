@@ -57,7 +57,7 @@ public class RegisterController {
         System.out.println(userExists);
 
         if (userExists != null) {
-            modelAndView.addObject("alreadyRegisteredMessage", "Oops!  There is already a user registered with the email provided.");
+            modelAndView.addObject("alreadyRegisteredMessage", "Beklager! Der er allerede registreret en bruger med den e-mail.");
             modelAndView.setViewName("register");
             bindingResult.reject("email");
         }
@@ -79,14 +79,14 @@ public class RegisterController {
 
             SimpleMailMessage registrationEmail = new SimpleMailMessage();
             registrationEmail.setTo(user.getEmail());
-            registrationEmail.setSubject("Registration Confirmation");
-            registrationEmail.setText("To confirm your e-mail address, please click the link below:\n"
+            registrationEmail.setSubject("Underretning");
+            registrationEmail.setText("Benyt venligst nedenstående link for at bekræfte:\n"
                     + appUrl + "/confirm?token=" + user.getConfirmationToken());
             registrationEmail.setFrom("noreply@domain.com");
 
             emailService.sendEmail(registrationEmail);
 
-            modelAndView.addObject("confirmationMessage", "A confirmation e-mail has been sent to " + user.getEmail());
+            modelAndView.addObject("confirmationMessage", "Vi har sendt en bekræftelses e-mail til " + user.getEmail());
             modelAndView.setViewName("register");
         }
 
@@ -123,7 +123,7 @@ public class RegisterController {
             //modelAndView.addObject("errorMessage", "Your password is too weak.  Choose a stronger one.");
             bindingResult.reject("password");
 
-            redir.addFlashAttribute("errorMessage", "Your password is too weak.  Choose a stronger one.");
+            redir.addFlashAttribute("errorMessage", "Dit password er for svagt. Prøv igen.");
 
             modelAndView.setViewName("redirect:confirm?token=" + requestParams.get("token"));
             System.out.println(requestParams.get("token"));

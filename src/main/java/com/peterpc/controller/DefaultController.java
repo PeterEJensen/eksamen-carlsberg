@@ -3,6 +3,7 @@ package com.peterpc.controller;
 //import com.peterpc.model.BaseballCard;
 import com.peterpc.model.CustomerModel;
 import com.peterpc.model.Post;
+import com.peterpc.model.User;
 import com.peterpc.services.CustomerModelService;
 import com.peterpc.services.HibernateSearchService;
 import com.peterpc.services.UserService;
@@ -57,7 +58,9 @@ public class DefaultController {
     @GetMapping("/admin")
     public String admin(Model model) {
         log.info("index action called...");
-       // model.addAttribute("students", userService.fetchAllUsers());
+        //model.addAttribute("users", userService.findByEmail(String email));
+        //List<User> users = userService.getUserList();
+       // model.addAttribute("users", users);
 
         log.info("index action ended...");
         return "admin";
@@ -97,6 +100,11 @@ public class DefaultController {
         return "login";
     }
 
+    @GetMapping("/contact")
+    public String contact() {
+        return "contact";
+    }
+
     @GetMapping("/403")
     public String error403() {
         return "/error/403";
@@ -106,13 +114,11 @@ public class DefaultController {
     public String search(@RequestParam(value = "search", required = false) String q, Model model) {
         List<CustomerModel> searchResults = null;
         try {
-            //cardservice.addCards();
+
             searchResults = searchservice.fuzzySearch(q);
 
         } catch (Exception ex) {
-            // here you should handle unexpected errors
-            // ...
-            // throw ex;
+
         }
         model.addAttribute("search", searchResults);
         return "search";

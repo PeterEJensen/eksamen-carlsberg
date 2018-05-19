@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Rapporter problem</title>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <link th:href="@{/webjars/bootstrap/3.3.7/css/bootstrap.min.css}" rel="stylesheet" media="screen"/>
+    <div th:replace="fragments/header :: header-css"/>
+
+</head>
+<body>
+<!-- FUNCTIONS FOR THIS CLASS YET TO BE ADDED -->
+
+<div th:replace="fragments/header :: header"/>
+<div class="container">
+    <form action="contact.html">
+
+        <label for="fname">Fornavn</label>
+        <input type="text" id="fname" name="firstname" placeholder="Dit navn.."/>
+
+        <label for="email">Email</label>
+        <input type="text" id="email" name="lastname" placeholder="Din carlsberg email.."/>
+
+        <label for="department">Afdeling</label>
+        <select id="department" name="department">
+            <option value="tekniker">Tekniker</option>
+            <option value="supporter">Supporter</option>
+            <option value="sale">Sale</option>
+        </select>
+
+        <label for="subject">Besked</label>
+        <textarea id="subject" name="subject" placeholder="Beskriv dit problem.." style="height:200px"></textarea>
+
+        <input type="submit" value="Submit"/>
+
+    </form>
+</div>
+<div th:replace="fragments/footer :: footer"/>
+</body>
+</html>
