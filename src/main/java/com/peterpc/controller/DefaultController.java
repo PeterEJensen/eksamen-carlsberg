@@ -1,6 +1,6 @@
 package com.peterpc.controller;
 
-//import com.peterpc.model.BaseballCard;
+//default controller class. It holds most remappings for our application
 import com.peterpc.model.CustomerModel;
 import com.peterpc.model.Post;
 import com.peterpc.model.User;
@@ -32,11 +32,10 @@ public class DefaultController {
     @Autowired
     UserService userService;
 
-    @RequestMapping(path = "/calendar", method = RequestMethod.GET)
+    @GetMapping("/calendar")
     String calendar(Model model) {
         return "calendar";
     }
-
 
 
     @RequestMapping(value="/post", method=RequestMethod.GET)
@@ -60,19 +59,19 @@ public class DefaultController {
         log.info("index action called...");
         //model.addAttribute("users", userService.findByEmail(String email));
         //List<User> users = userService.getUserList();
-       // model.addAttribute("users", users);
+        //model.addAttribute("users", users);
 
         log.info("index action ended...");
         return "admin";
     }
 
 
-
-   @RequestMapping(value="/", method=RequestMethod.GET)
-    public String index(Post post) {
+    @RequestMapping(value="/", method=RequestMethod.GET) //get method to request data
+    public String index() {
         return "index";
     }
-    @RequestMapping(value = "/", method = RequestMethod.POST)
+
+    @RequestMapping(value = "/", method = RequestMethod.POST) //post method to send data (in this isntance, post a note to index)
     public String ShowPost(@Valid Post post, BindingResult bindingResult, Model model) {
         if (bindingResult.hasErrors()) {
             return "index";
@@ -110,7 +109,7 @@ public class DefaultController {
         return "/error/403";
     }
 
-    @RequestMapping(value = "/search", method = RequestMethod.GET)
+    @GetMapping("/search")
     public String search(@RequestParam(value = "search", required = false) String q, Model model) {
         List<CustomerModel> searchResults = null;
         try {

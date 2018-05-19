@@ -119,8 +119,7 @@ public class RegisterController {
 
         Strength strength = passwordCheck.measure(requestParams.get("password"));
 
-        if (strength.getScore() < 3) {
-            //modelAndView.addObject("errorMessage", "Your password is too weak.  Choose a stronger one.");
+        if (strength.getScore() < 3) { //score is determined by dependency zxcvbn which is a framework to determine this
             bindingResult.reject("password");
 
             redir.addFlashAttribute("errorMessage", "Dit password er for svagt. Prøv igen.");

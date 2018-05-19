@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-//controller class for calender in user tab
+//controller class for calender in user tab, unused and might be replaced
 
 @RestController
 @RequestMapping("/api/event")

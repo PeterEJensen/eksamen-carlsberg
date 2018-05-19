@@ -13,7 +13,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-// handle 403 page
+// handle 403 page, only handles access denied requests
 @Component
 public class MyAccessDeniedHandler implements AccessDeniedHandler {
 

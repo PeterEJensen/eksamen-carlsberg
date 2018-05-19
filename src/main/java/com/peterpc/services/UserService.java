@@ -17,7 +17,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.*;
 
-
+//user service class. registryclass calls actiosn from this (save.user etc)
 @Service("userService")
 public class UserService {
 
@@ -46,6 +46,7 @@ public class UserService {
         userRepository.save(user);
 
     }
+
 
 
 }

@@ -5,7 +5,7 @@ import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Service;
-
+//Class  used to send confirmation email when users register
 @Service("emailService")
 public class EmailService {
 

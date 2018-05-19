@@ -1,5 +1,5 @@
 package com.peterpc.model;
-
+//Getter and setter class to post note to index
 import javax.validation.constraints.Size;
 
 public class Post {
