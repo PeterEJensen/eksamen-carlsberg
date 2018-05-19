@@ -22,34 +22,34 @@
 <div th:replace="fragments/header :: header"/>
 
 <div class="container">
-<form action="#" th:action="@{/search}" th:object="${search}">
-    <label for="search_input">Søg:</label> <input name="search"
-                                                     id="search">
-    </input>
-    <div th:if="${not #lists.isEmpty(search)}">
-        <h2>Søge resultat:</h2>
-        <table>
-            <thead>
-            <tr>
-              <!--  <th>ID</th>-->
-                <th>Kunde nr</th>
-                <th>Kunde navn</th>
-                <th>Adresse</th>
+    <form action="#" th:action="@{/search}" th:object="${search}">
+        <label for="search_input">Søg:</label> <input name="search"
+                                                      id="search">
+        </input>
+        <div th:if="${not #lists.isEmpty(search)}">
+            <h2>Søge resultat:</h2>
+            <table>
+                <thead>
+                <tr>
+                    <!--  <th>ID</th>-->
+                    <th>Kunde nr</th>
+                    <th>Kunde navn</th>
+                    <th>Adresse</th>
 
-            </tr>
-            </thead>
-            <tbody>
-            <tr th:each="search : ${search}">
-                <!--<td th:text="${search.id}">Text ...</td>-->
-                <td th:text="${search.kundenr}">Text...</td>
-                <td th:text="${search.name}">Text ...</td>
-                <td th:text="${search.address}">Text ...</td>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="search : ${search}">
+                    <!--<td th:text="${search.id}">Text ...</td>-->
+                    <td th:text="${search.kundenr}">Text...</td>
+                    <td th:text="${search.name}">Text ...</td>
+                    <td th:text="${search.address}">Text ...</td>
 
-            </tr>
-            </tbody>
-        </table>
-    </div>
-</form>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </form>
 </div>
 </body>
 </html>

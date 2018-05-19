@@ -12,6 +12,7 @@ import org.springframework.transaction.annotation.Transactional;
 import javax.persistence.EntityManager;
 import javax.persistence.NoResultException;
 import java.util.List;
+
 //entity manager class to help with searching. Covered by hibernate in spring
 @Service
 public class HibernateSearchService {

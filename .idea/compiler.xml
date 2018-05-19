@@ -6,11 +6,13 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
+        <module name="eksamen-carlsberg" />
         <module name="roskilde-bornehave-spring-app" />
         <module name="spring-boot-web-spring-security" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
+      <module name="eksamen-carlsberg" target="1.8" />
       <module name="roskilde-bornehave-spring-app" target="1.8" />
       <module name="spring-boot-web-spring-security" target="1.8" />
     </bytecodeTargetLevel>

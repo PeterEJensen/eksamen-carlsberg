@@ -27,7 +27,7 @@ public class RegisterController {
     private BCryptPasswordEncoder bCryptPasswordEncoder;
     private UserService userService;
     private EmailService emailService;
-  //  @Autowired
+    //  @Autowired
     //javax.sql.DataSource dataSource;
 
     public RegisterController(BCryptPasswordEncoder bCryptPasswordEncoder,
@@ -39,8 +39,8 @@ public class RegisterController {
     }
 
     // Return registration form template
-    @RequestMapping(value="/register", method = RequestMethod.GET)
-    public ModelAndView showRegistrationPage(ModelAndView modelAndView, User user){
+    @RequestMapping(value = "/register", method = RequestMethod.GET)
+    public ModelAndView showRegistrationPage(ModelAndView modelAndView, User user) {
         modelAndView.addObject("user", user);
         modelAndView.setViewName("register");
         return modelAndView;
@@ -75,7 +75,7 @@ public class RegisterController {
 
             userService.saveUser(user);
 
-            String appUrl = request.getScheme() + "://" + request.getServerName() +":"+ request.getServerPort();
+            String appUrl = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort();
 
             SimpleMailMessage registrationEmail = new SimpleMailMessage();
             registrationEmail.setTo(user.getEmail());
@@ -94,7 +94,7 @@ public class RegisterController {
     }
 
     // Process confirmation link
-    @RequestMapping(value="/confirm", method = RequestMethod.GET)
+    @RequestMapping(value = "/confirm", method = RequestMethod.GET)
     public ModelAndView confirmRegistration(ModelAndView modelAndView, @RequestParam("token") String token) {
 
         User user = userService.findByConfirmationToken(token);
@@ -110,7 +110,7 @@ public class RegisterController {
     }
 
     // Process confirmation link
-    @RequestMapping(value="/confirm", method = RequestMethod.POST)
+    @RequestMapping(value = "/confirm", method = RequestMethod.POST)
     public ModelAndView confirmRegistration(ModelAndView modelAndView, BindingResult bindingResult, @RequestParam Map<String, String> requestParams, RedirectAttributes redir) {
 
         modelAndView.setViewName("confirm");
@@ -141,11 +141,7 @@ public class RegisterController {
         user.setEnabled(true);
 
 
-
-
-
         //MANGLER AT SET ROLE TIL ROLE_USER AUTOMATISK PÅ NYE REGISTRERINGER
-
 
 
         // Save user

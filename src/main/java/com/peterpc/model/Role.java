@@ -2,15 +2,6 @@ package com.peterpc.model;
 
 import javax.persistence.*;
 
-import netscape.security.Privilege;
-import org.hibernate.validator.constraints.Email;
-import org.hibernate.validator.constraints.NotEmpty;
-import org.springframework.data.annotation.Transient;
-
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.List;
-import java.util.Set;
 
 /*
 Class for handling roleuser table in database
@@ -33,9 +24,17 @@ public class Role {
     @Column(name = "role")
     public String role;
 
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
 
 
 
+/*
     public int getroleId() {
         return id;
     }
@@ -53,7 +52,7 @@ public class Role {
         this.role = role;
     }
 
-  /*  public String getEmail() {
+  / public String getEmail() {
         return email;
     }
 

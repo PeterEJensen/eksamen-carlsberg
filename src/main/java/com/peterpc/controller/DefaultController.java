@@ -1,6 +1,7 @@
 package com.peterpc.controller;
 
 //default controller class. It holds most remappings for our application
+
 import com.peterpc.model.CustomerModel;
 import com.peterpc.model.Post;
 import com.peterpc.model.User;
@@ -38,7 +39,7 @@ public class DefaultController {
     }
 
 
-    @RequestMapping(value="/post", method=RequestMethod.GET)
+    @RequestMapping(value = "/post", method = RequestMethod.GET)
     public String post(Post post) {
         return "post";
     }
@@ -66,12 +67,13 @@ public class DefaultController {
     }
 
 
-    @RequestMapping(value="/", method=RequestMethod.GET) //get method to request data
+    @RequestMapping(value = "/", method = RequestMethod.GET) //get method to request data
     public String index() {
         return "index";
     }
 
-    @RequestMapping(value = "/", method = RequestMethod.POST) //post method to send data (in this isntance, post a note to index)
+    @RequestMapping(value = "/", method = RequestMethod.POST)
+    //post method to send data (in this isntance, post a note to index)
     public String ShowPost(@Valid Post post, BindingResult bindingResult, Model model) {
         if (bindingResult.hasErrors()) {
             return "index";
@@ -80,7 +82,6 @@ public class DefaultController {
         model.addAttribute("content", post.getContent());
         return "index";
     }
-
 
 
     @GetMapping("/user")

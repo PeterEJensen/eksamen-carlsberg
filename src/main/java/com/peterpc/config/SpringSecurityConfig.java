@@ -18,7 +18,7 @@ import javax.sql.DataSource;
 public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
 
     //@Qualifier("dataSource")
-   @Autowired
+    @Autowired
     DataSource dataSource;
     //Autowired
     private AccessDeniedHandler accessDeniedHandler;
@@ -62,12 +62,10 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
     }
 
 
-
     @Bean
-    public PasswordEncoder passwordEncoder(){
+    public PasswordEncoder passwordEncoder() {
         PasswordEncoder encoder = new BCryptPasswordEncoder();
         return encoder;
-
 
 
     }

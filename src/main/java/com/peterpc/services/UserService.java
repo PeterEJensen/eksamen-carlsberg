@@ -40,13 +40,12 @@ public class UserService {
 
     public void saveUser(User user) {
 
-       // Role userRole = roleRepository.findByRole("ROLE_ADMIN");
+        // Role userRole = roleRepository.findByRole("ROLE_ADMIN");
         //Role userRole = roleRepository.findByRole("ADMIN");
-       // user.setRoles(new HashSet<Role>(Arrays.asList(userRole)));
+        // user.setRoles(new HashSet<Role>(Arrays.asList(userRole)));
         userRepository.save(user);
 
     }
-
 
 
 }

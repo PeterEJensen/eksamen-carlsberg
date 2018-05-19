@@ -1,4 +1,5 @@
 package com.peterpc.model;
+
 //Getter and setter model class for user page
 public class Event {
 

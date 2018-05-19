@@ -7,7 +7,7 @@
 
 
 
-    <artifactId>Carlsberg Customer intra</artifactId>
+    <artifactId>carsberg-intra</artifactId>
     <packaging>jar</packaging>
     <name>Spring Carlsberg intra</name>
     <description>Carlsberg eksamen</description>

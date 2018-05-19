@@ -1,4 +1,5 @@
 package com.peterpc.model;
+
 import org.hibernate.search.annotations.Field;
 import org.hibernate.search.annotations.Indexed;
 
