@@ -12,7 +12,7 @@ footer{
 
 .navbar-carlsberg{
 
-	background-color: #FFFFFF;
+	background-color: #0A4704;
 	border-color: #0A4704;
 
 }
@@ -51,5 +51,10 @@ input[type=submit]:hover {
 .container {
 	border-radius: 5px;
 	background-color: #f0f0f0;
+	padding: 20px;
+}
+
+.navbar-container{
+	background-color: #0A4704;
 	padding: 20px;
 }
