@@ -11,7 +11,7 @@
     <meta name="author" content=""/>
     <link rel="icon" href="favicon.ico"/>
 
-    <title>User Registration with Spring Boot</title>
+    <title>Bekræft Password</title>
 
     <!-- Bootstrap core CSS -->
     <link
@@ -118,15 +118,16 @@
                         callback: {
                             callback: function (value, validator, $field) {
                                 var password = $field.val();
-                                if (password == '') {
+                                if (password === '') {
                                     return true;
                                 }
 
                                 var result = zxcvbn(password),
                                     score = result.score,
-                                    message = result.feedback.warning || 'Passwordet er for svagt';
+                                    message = result.feedback.warning || 'Password er for svagt';
 
-                                // Update the progress bar width and add alert class **not implemented**
+                                // progress bar not implemented, however password check is still present.
+                                // PW Score is used as a number to check strength*
                                 var $bar = $('#strengthBar');
                                 switch (score) {
                                     case 0:

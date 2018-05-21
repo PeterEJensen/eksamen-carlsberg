@@ -80,7 +80,7 @@ public class RegisterController {
             SimpleMailMessage registrationEmail = new SimpleMailMessage();
             registrationEmail.setTo(user.getEmail());
             registrationEmail.setSubject("Underretning");
-            registrationEmail.setText("Benyt venligst nedenstående link for at bekræfte:\n"
+            registrationEmail.setText("Hej "+user.getFirstName()+ "\n\nBenyt venligst nedenstående link for at bekræfte:\n"
                     + appUrl + "/confirm?token=" + user.getConfirmationToken());
             registrationEmail.setFrom("noreply@domain.com");
 
