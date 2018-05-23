@@ -7,6 +7,7 @@ import javax.persistence.*;
 Class for handling roleuser table in database
 getters and setters for writing to the table
  */
+//Created by Peter & Fida
 @Entity
 @Table(name = "roleuser")
 public class Role {

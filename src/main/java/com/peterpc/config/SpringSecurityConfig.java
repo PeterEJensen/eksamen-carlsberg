@@ -1,5 +1,5 @@
 package com.peterpc.config;
-
+//Created by Peter
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
@@ -29,9 +29,9 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
 
         http.csrf().disable()
                 .authorizeRequests()
-                .antMatchers("/", "/home", "/about", "/index", "/register", "/confirm", "/contact").permitAll()
-                .antMatchers("/admin/**", "/delete", "/create", "/calendar", "/post").hasAnyRole("ADMIN")
-                .antMatchers("/user/**", "/calendar", "/search", "/search/**").hasAnyRole("USER")
+                .antMatchers("/", "/home", "/about", "/index", "/register", "/confirm").permitAll()
+                .antMatchers("/admin/**", "/delete", "/create", "/calendar", "/post", "/contact").hasAnyRole("ADMIN")
+                .antMatchers("/user/**", "/calendar", "/search", "/search/**", "/contact").hasAnyRole("USER")
                 .anyRequest().authenticated()
                 .and()
                 .formLogin()

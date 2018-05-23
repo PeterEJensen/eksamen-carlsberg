@@ -1,6 +1,7 @@
 package com.peterpc.controller;
 
 //default controller class. It holds most remappings for our application
+//Created by Peter & Fida
 
 import com.peterpc.model.CustomerModel;
 import com.peterpc.model.Post;

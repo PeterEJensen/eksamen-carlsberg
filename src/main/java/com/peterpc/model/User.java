@@ -12,6 +12,7 @@ import java.util.*;
 Class for handling user table in database
 getters and setters for writing to the table
  */
+//Created by Peter & Fida
 @Entity
 @Table(name = "user")
 public class User {

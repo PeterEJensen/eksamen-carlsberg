@@ -1,5 +1,5 @@
 package com.peterpc.model;
-
+//Created by Peter & Fida
 //Getter and setter model class for user page
 public class Event {
 

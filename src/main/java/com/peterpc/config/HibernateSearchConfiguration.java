@@ -1,5 +1,5 @@
 package com.peterpc.config;
-
+//Created by Peter
 import javax.persistence.EntityManager;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,11 +14,11 @@ import com.peterpc.services.HibernateSearchService;
 public class HibernateSearchConfiguration {
 
     @Autowired
-    private EntityManager bentityManager;
+    private EntityManager entityManager;
 
     @Bean
     HibernateSearchService hibernateSearchService() {
-        HibernateSearchService hibernateSearchService = new HibernateSearchService(bentityManager);
+        HibernateSearchService hibernateSearchService = new HibernateSearchService(entityManager);
         hibernateSearchService.initializeHibernateSearch();
         return hibernateSearchService;
     }
