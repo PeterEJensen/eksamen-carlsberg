@@ -34,6 +34,7 @@ public class UserService {
     }
 
 
+
     public User findByConfirmationToken(String confirmationToken) {
         return userRepository.findByConfirmationToken(confirmationToken);
     }

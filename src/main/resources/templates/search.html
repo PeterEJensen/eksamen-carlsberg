@@ -3,9 +3,9 @@
 <head>
     <!-- META SECTION -->
     <title>Søg Kunde</title>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <link th:href="@{/webjars/bootstrap/3.3.7/css/bootstrap.min.css}" rel="stylesheet" media="screen"/>
     <div th:replace="fragments/header :: header-css"/>
     <!-- END META SECTION -->
     <!--  BEGIN STYLE -->
@@ -44,12 +44,28 @@
                     <td th:text="${search.kundenr}">Text...</td>
                     <td th:text="${search.name}">Text ...</td>
                     <td th:text="${search.address}">Text ...</td>
-
                 </tr>
                 </tbody>
             </table>
+
+            <form>
+                <label for="tekniker">Vælg Tekniker</label>
+                <select id="tekniker" name="tekniker" style="width:100px">
+                    <option value="tekniker1">Torben</option>
+                    <option value="tekniker2">Preben</option>
+                    <option value="tekniker3">Lars</option>
+                </select>
+                <label for="subject">Beskriv kundens problem</label>
+                <textarea id="subject" name="subject" placeholder="" style="height:100px"></textarea>
+                <input type="submit" value="Send"/>
+            </form>
+
         </div>
     </form>
+
+
+
+
 </div>
 </body>
 </html>

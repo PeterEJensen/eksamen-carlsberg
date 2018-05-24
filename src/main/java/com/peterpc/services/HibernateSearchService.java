@@ -44,7 +44,7 @@ public class HibernateSearchService {
         //method to know which column to search for. So far it will only search for String name, but more search values could be added.
         FullTextEntityManager fullTextEntityManager = Search.getFullTextEntityManager(centityManager);
         QueryBuilder qb = fullTextEntityManager.getSearchFactory().buildQueryBuilder().forEntity(CustomerModel.class).get();
-        Query luceneQuery = qb.keyword().fuzzy().withEditDistanceUpTo(1).withPrefixLength(1).onFields("name")
+        Query luceneQuery = qb.keyword().fuzzy().withEditDistanceUpTo(1).withPrefixLength(1).onFields("name", "address")
                 .matching(searchTerm).createQuery();
 
         javax.persistence.Query jpaQuery = fullTextEntityManager.createFullTextQuery(luceneQuery, CustomerModel.class);

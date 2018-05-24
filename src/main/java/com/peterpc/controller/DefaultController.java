@@ -7,11 +7,14 @@ import com.peterpc.model.CustomerModel;
 import com.peterpc.model.Post;
 import com.peterpc.model.User;
 import com.peterpc.services.CustomerModelService;
+import com.peterpc.services.EmailService;
 import com.peterpc.services.HibernateSearchService;
 import com.peterpc.services.UserService;
+import com.sun.xml.internal.ws.api.streaming.XMLStreamReaderFactory;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.mail.SimpleMailMessage;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -33,6 +36,11 @@ public class DefaultController {
 
     @Autowired
     UserService userService;
+    private EmailService emailService;
+
+    public DefaultController(EmailService emailService){
+        this.emailService = emailService;
+    }
 
     @GetMapping("/calendar")
     String calendar(Model model) {
@@ -111,19 +119,29 @@ public class DefaultController {
         return "/error/403";
     }
 
+
+
     @GetMapping("/search")
     public String search(@RequestParam(value = "search", required = false) String q, Model model) {
         List<CustomerModel> searchResults = null;
         try {
-
             searchResults = searchservice.fuzzySearch(q);
-
         } catch (Exception ex) {
-
         }
+        SimpleMailMessage technicalEmail = new SimpleMailMessage();
+
+        technicalEmail.setTo("noreplyspringboot@gmail.com");
+        technicalEmail.setSubject("Vagtkald");
+        technicalEmail.setText("Hej \n\nFølgende detaljer om kunden fremsendes:\n"
+                + searchResults);
+        technicalEmail.setFrom("noreply@domain.com");
+
+        emailService.sendEmail(technicalEmail);
+
+        model.addAttribute("confirmationMessage", "Vi har sendt vagtkaldet til  ");
         model.addAttribute("search", searchResults);
         return "search";
-
+        /* kode til fremsendelse af kunden til tekniker. tekniker DB skal oprettes med link til deres mail*/
     }
 
 
